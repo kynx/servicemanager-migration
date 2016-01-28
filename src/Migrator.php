@@ -8,8 +8,6 @@ namespace Kynx\ServiceManager;
 use ReflectionClass;
 use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\ServiceManager;
-use ZendTest\ServiceManager\AbstractPluginManagerTest;
-
 
 class Migrator
 {
@@ -106,7 +104,7 @@ class Migrator
             foreach ($lines as $line) {
                 $parts = explode('=>', $line);
                 if (count($parts) > 1) {
-                    $property['values'][trim($parts[0])] = trim($parts[1]);
+                    $property['values'][trim($parts[0])] = preg_replace('/^\s*(.*)[,\s]+/', '$1', $parts[1]);
                 }
             }
         }
@@ -141,11 +139,18 @@ class Migrator
     private function sortProperties($properties)
     {
         uksort($properties, function($a, $b) {
-            if (strstr($a, '::class') && !strstr($b, '::class')) {
+            $aIsClass = strstr($a, '::class');
+            $bIsClass = strstr($b, '::class');
+
+            if ($aIsClass && $bIsClass) {
+                // don't mess with existing order
+                return 0;
+            } elseif ($aIsClass && !$bIsClass) {
                 return -1;
-            } elseif (!strstr($a, '::class') && strstr($b, '::class')) {
+            } elseif (!$aIsClass && $bIsClass) {
                 return 1;
             }
+
             if ($a == $b) return 0;
             return $a < $b ? -1 : 1;
         });
