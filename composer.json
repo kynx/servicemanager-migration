@@ -1,0 +1,24 @@
+{
+  "name": "kynx/servicemanager-migration",
+  "description": "Tools for helping with v2-v3 zend-servicemanager migration",
+  "minimum-stability": "dev",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Matt Kynaston",
+      "email": "matt@kynx.org"
+    }
+  ],
+  "autoload" : {
+    "psr-4" : {
+      "Kynx\\ServiceManager\\" : "src/",
+      "KynxTest\\ServiceManager\\": "test/"
+    }
+  },
+  "require-dev": {
+    "zendframework/zend-servicemanager": "^3.0",
+    "fabpot/php-cs-fixer": "1.7.*",
+    "phpunit/PHPUnit": "^4.5",
+    "clue/graph-composer": "dev-master"
+  }
+}
