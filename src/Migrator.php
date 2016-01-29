@@ -35,7 +35,7 @@ class Migrator
     {
         $factories = $this->sortProperties($this->getFactories());
 
-        return "    property \$factories = [\n"
+        return "    protected \$factories = [\n"
         . $this->toPhpString($factories, str_repeat(' ', 8))
         . "   ];\n";
     }
