@@ -22,6 +22,6 @@
     "clue/graph-composer": "dev-master"
   },
   "bin" : [
-    "bin/sm2v3.php"
+    "bin/smv2v3.php"
   ]
 }
