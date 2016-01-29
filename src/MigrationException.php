@@ -1,14 +1,15 @@
 <?php
 /**
- * @author: matt
- * @copyright: 2015 Claritum Limited
- * @license: Commercial
+ * @license: BSD-3-Clause
  */
 
 namespace Kynx\ServiceManager;
 
 use RuntimeException;
 
+/**
+ * Exception thrown when your migration goes wrong
+ */
 class MigrationException extends RuntimeException
 {
 }

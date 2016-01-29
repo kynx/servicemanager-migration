@@ -9,6 +9,9 @@ use ReflectionClass;
 use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\ServiceManager;
 
+/**
+ * Dumb ass class for v2-v3 compatible zend-servicemanager migrations
+ */
 class Migrator
 {
     private $class;
