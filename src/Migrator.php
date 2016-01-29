@@ -145,10 +145,7 @@ class Migrator
             $aIsClass = strstr($a, '::class');
             $bIsClass = strstr($b, '::class');
 
-            if ($aIsClass && $bIsClass) {
-                // don't mess with existing order
-                return 0;
-            } elseif ($aIsClass && !$bIsClass) {
+            if ($aIsClass && !$bIsClass) {
                 return -1;
             } elseif (!$aIsClass && $bIsClass) {
                 return 1;
